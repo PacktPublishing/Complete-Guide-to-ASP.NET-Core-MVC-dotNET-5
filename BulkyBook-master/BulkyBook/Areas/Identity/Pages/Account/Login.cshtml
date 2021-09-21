@@ -1,0 +1,73 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+    <div id="logreg-forms">
+
+        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+            <h1 class="h3 mb-3 font-weight-normal text-primary" style="text-align:center;">Sign In</h1>
+            <div class="social-login pb-0 mb-0">
+                @foreach (var provider in Model.ExternalLogins)
+                {
+                    @if (provider.Name.ToLower().Contains("facebook"))
+                    {
+                        <button type="submit" class="btn btn-block facebook-btn form-control"
+                                name="provider" value="@provider.Name"
+                                title="Log in using your @provider.DisplayName account">
+                            <i class="fab fa-facebook-square"></i> @provider.DisplayName
+                        </button>
+                    }
+                    else
+                    {
+                        @if (provider.Name.ToLower().Contains("google"))
+                        {
+                            <button type="submit" class="btn btn-block google-btn form-control"
+                                    name="provider" value="@provider.Name"
+                                    title="Log in using your @provider.DisplayName account">
+                                <i class="fab fa-google"></i> @provider.DisplayName
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-primary" name="provider"
+                                    value="@provider.Name"
+                                    title="Log in using your @provider.DisplayName account">
+                                @provider.DisplayName
+                            </button>
+                        }
+                    }
+
+                }
+            </div>
+
+        </form>
+        <form id="account" method="post">
+
+            @if (Model.ExternalLogins?.Count > 0)
+            {
+                <p style="text-align:center"> OR </p>
+            }
+
+            <input asp-for="Input.Email" placeholder="Email..." type="email" class="mb-1 form-control" />
+            <input asp-for="Input.Password" placeholder="Password..." type="password" class="form-control" />
+            <button type="submit" class="btn btn-success btn-block"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+
+            <a id="forgot-password" asp-page="./ForgotPassword" class="pb-2 text-info">Forgot your password?</a>
+
+            <button type="submit" asp-page-handler="SendVerificationEmail" class="btn-link text-info"
+                    style="padding:0px;margin:0px;border:0px">
+                Resend email confirmation
+            </button>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl"
+               class="btn btn-primary text-white"><i class="fas fa-user-plus"></i> Register as a new user</a>
+        </form>
+
+    </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

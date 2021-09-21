@@ -1,0 +1,24 @@
+<div class="row pb-3 backgroundWhite">
+        <div class="col-lg-3 col-md-6" >
+            <div class="row p-2">
+                <div class="col-12  p-1" style="border:1px solid #008cba; border-radius: 5px;">
+                    <div class="card" style="border:0px;">
+                        <img src="https://via.placeholder.com/150" class="card-img-top rounded" />
+                        <div class="pl-1">
+                            <p class="card-title h5"><b style="color:#2c3e50">Title</b></p>
+                            <p class="card-title text-primary">by <b>Author</b></p>
+                        </div>
+                        <div style="padding-left:5px;">
+                            <p>List Price: <strike><b class="">$$$$$PRICE</b></strike></p>
+                        </div>
+                        <div style="padding-left:5px;">
+                            <p style="color:maroon">As low as: <b class="">$$$$$PRICE100</b></p>
+                        </div>
+                    </div>
+                    <div >
+                        DETAILS BUTTON
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

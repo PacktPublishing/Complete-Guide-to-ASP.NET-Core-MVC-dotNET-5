@@ -1,0 +1,27 @@
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        @TempData["Success"]
+    </div>
+
+}
+<form method="post" asp-action="Index" id="payment-form">
+    <div class="wrapper">
+        <div class="checkout container">
+            <header>
+                <h1 class="text-info">Test a Random Transaction between 1-100 using </h1>
+                <p class="text-success">
+                    Make a test payment with Braintree using PayPal or a card
+                </p>
+            </header>
+            <section>
+                <div class="bt-drop-in-wrapper">
+                    <div id="bt-dropin"></div>
+                </div>
+            </section>
+            <input id="nonce" name="payment_method_nonce" type="hidden" />
+            <button class="button" id="submit-button"><span>Test Transaction</span></button>
+        </div>
+    </div>
+</form>
